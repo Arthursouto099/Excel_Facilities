@@ -15,4 +15,7 @@ model users {
   updatedAt DateTime @default(now())
   email     String   @unique
   password  String
+  contact String  @default("1")
+  state String @default("state")
+  cpf String @unique @default("333.333.333-33")
 }

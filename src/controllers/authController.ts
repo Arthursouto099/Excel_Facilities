@@ -47,14 +47,14 @@ class AuthController {
 
     public static async register(req: Request, res: Response): Promise<void> {
         try {
-            const { name, email, password, age, } = req.body;
+            const { name, email, password, age, contact, state, cpf } = req.body;
 
-            if (!name || !email || !password || !age) {
+            if (!name || !email || !password || !age || !contact || !state || !cpf) {
                 res.status(400).json({ message: "Todos os dados são obrigatorios" })
                 return
             }
 
-            const user = new UserModel(crypto.randomUUID(), name, email, age, password);
+            const user = new UserModel(crypto.randomUUID(), name, email, age, password, contact, state, cpf);
 
             const insert = await user.insertUser();
 
